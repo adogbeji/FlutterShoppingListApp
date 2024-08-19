@@ -16,7 +16,11 @@ class _NewItemState extends State<NewItem> {
       ),
       body: const Padding(
         padding: EdgeInsets.all(12),
-        child: Text('The form'),
+        child: Form(
+          child: Column(
+            children: [],
+          ),
+        ),
       ),
     );
   }
