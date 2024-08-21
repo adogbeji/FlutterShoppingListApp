@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:shopping_list/data/categories.dart';
 
@@ -32,32 +33,37 @@ class _NewItemState extends State<NewItem> {
               ),
 
               Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      label: Text('Quantity'),
+                  Expanded(
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                        label: Text('Quantity'),
+                      ),
+                      initialValue: '1',
                     ),
-                    initialValue: '1',
                   ),
                   const SizedBox(width: 8,),
-                  DropdownButtonFormField(
-                    items: [
-                      for (final category in categories.entries)
-                        DropdownMenuItem(
-                          value: category.value,
-                          child: Row(
-                          children: [
-                            Container(
-                              width: 16,
-                              height: 16,
-                              color: category.value.color,
-                            ),
-                            const SizedBox(width: 6),
-                            Text(category.value.title),
-                          ],
-                        ),),
-                    ], 
-                    onChanged: (value) {}
+                  Expanded(
+                    child: DropdownButtonFormField(
+                      items: [
+                        for (final category in categories.entries)
+                          DropdownMenuItem(
+                            value: category.value,
+                            child: Row(
+                            children: [
+                              Container(
+                                width: 16,
+                                height: 16,
+                                color: category.value.color,
+                              ),
+                              const SizedBox(width: 6),
+                              Text(category.value.title),
+                            ],
+                          ),),
+                      ], 
+                      onChanged: (value) {}
+                    ),
                   ),
                 ],
               ),
