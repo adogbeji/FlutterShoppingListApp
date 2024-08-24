@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:shopping_list/data/categories.dart';
 
@@ -13,6 +12,7 @@ class NewItem extends StatefulWidget {
 class _NewItemState extends State<NewItem> {
   final _formKey = GlobalKey<FormState>();  // Form Key
   var _enteredName = '';
+  var _enteredQuantity = 1;
 
   void _saveItem() {
     if (_formKey.currentState!.validate()) {
@@ -59,7 +59,7 @@ class _NewItemState extends State<NewItem> {
                         label: Text('Quantity'),
                       ),
                       keyboardType: TextInputType.number,
-                      initialValue: '1',
+                      initialValue: _enteredQuantity.toString(),
                       validator: (value) {
                         if (value == null ||
                             value.isEmpty ||
@@ -68,6 +68,9 @@ class _NewItemState extends State<NewItem> {
                           return 'Must be between 1 and 50 characters long!';
                         }
                         return null;
+                      },
+                      onSaved: (value) {
+                        _enteredQuantity = int.parse(value!);
                       },
                     ),
                   ),
