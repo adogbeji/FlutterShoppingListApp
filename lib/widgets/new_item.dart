@@ -12,9 +12,12 @@ class NewItem extends StatefulWidget {
 
 class _NewItemState extends State<NewItem> {
   final _formKey = GlobalKey<FormState>();  // Form Key
+  var _enteredName = '';
 
   void _saveItem() {
-    _formKey.currentState!.validate();
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+    }
   }
 
   @override
@@ -42,6 +45,9 @@ class _NewItemState extends State<NewItem> {
                     return 'Must be between 1 and 50 characters long!';
                   }
                   return null;
+                },
+                onSaved: (value) {
+                  _enteredName = value!;
                 },
               ),
               Row(
