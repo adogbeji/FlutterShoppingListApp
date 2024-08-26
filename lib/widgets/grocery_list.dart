@@ -43,16 +43,16 @@ class _GroceryListState extends State<GroceryList> {
         ],
       ),
       body: ListView.builder(
-        itemCount: groceryItems.length,
+        itemCount: _groceryItems.length,
         itemBuilder: (ctx, index) => ListTile(
-          title: Text(groceryItems[index].name),
+          title: Text(_groceryItems[index].name),
           leading: Container(
             width: 24,
             height: 24,
-            color: groceryItems[index].category.color,
+            color: _groceryItems[index].category.color,
           ),
           trailing: Text(
-            groceryItems[index].quantity.toString(),
+            _groceryItems[index].quantity.toString(),
           ),
         ),
       ),
