@@ -77,6 +77,8 @@ class _GroceryListState extends State<GroceryList> {
       //     ),
       //   ),
       // ),
+      
+      body: content,
     );
   }
 }
