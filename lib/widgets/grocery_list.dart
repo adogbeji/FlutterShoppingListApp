@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
@@ -26,7 +28,8 @@ class _GroceryListState extends State<GroceryList> {
   void _loadItems() async {
     final url = Uri.https('shopping-list-9ea6f-default-rtdb.firebaseio.com', 'shopping-list.json');
     final response = await http.get(url);  // Sends GET request to Firebase
-    print(response);
+    // print(response);
+    json.decode(response.body);
   }
 
   void _addItem() async {
