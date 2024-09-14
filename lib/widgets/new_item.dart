@@ -20,10 +20,14 @@ class _NewItemState extends State<NewItem> {
   var _enteredName = '';
   var _enteredQuantity = 1;
   var _selectedCategory = categories[Categories.vegetables]!;
+  var _isSending = false;
 
   void _saveItem() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+      setState(() {
+        _isSending = true;
+      });
       final url = Uri.https('shopping-list-9ea6f-default-rtdb.firebaseio.com', 'shopping-list.json');
       final response = await http.post(url, headers: {
         'Content-Type': 'application/json'
